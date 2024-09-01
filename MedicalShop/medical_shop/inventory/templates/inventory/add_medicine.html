@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Add Medicine</title>
+    <link rel="stylesheet" href="{% static 'inventory/styles.css' %}">
+</head>
+<body>
+    <h2>Add Medicine</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label for="name">Medicine Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="rfid_tag">RFID Tag:</label>
+        <input type="text" id="rfid_tag" name="rfid_tag" required><br>
+
+        <label for="location">Location (Rack Number):</label>
+        <input type="text" id="location" name="location" required><br>
+
+        <label for="original_quantity">Original Quantity:</label>
+        <input type="number" id="original_quantity" name="original_quantity" required><br>
+
+        <label for="quantity">Current Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required><br>
+
+        <button type="submit">Add Medicine</button>
+    </form>
+
+    <h2>Current Medicines</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Medicine Name</th>
+                <th>RFID Tag</th>
+                <th>Location</th>
+                <th>Original Quantity</th>
+                <th>Current Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicine in medicines %}
+                <tr>
+                    <td>{{ medicine.name }}</td>
+                    <td>{{ medicine.rfid_tag }}</td>
+                    <td>{{ medicine.location }}</td>
+                    <td>{{ medicine.original_quantity }}</td>
+                    <td>{{ medicine.quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

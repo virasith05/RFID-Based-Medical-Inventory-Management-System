@@ -1,0 +1,8 @@
+<h2>Search Results</h2>
+<ul>
+    {% for medicine in results %}
+        <li>{{ medicine.name }} - Rack: {{ medicine.rack_location }} - Quantity: {{ medicine.quantity }}</li>
+    {% empty %}
+        <li>No medicines found.</li>
+    {% endfor %}
+</ul>

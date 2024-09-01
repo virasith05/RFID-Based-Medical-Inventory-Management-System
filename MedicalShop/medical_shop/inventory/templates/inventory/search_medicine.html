@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Medicine</title>
+    <link rel="stylesheet" href="{% static 'inventory/styles.css' %}">
+</head>
+<body>
+    <h2>Search Medicine</h2>
+    <form method="GET" action="">
+        <input type="text" name="q" placeholder="Enter medicine name">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if medicines %}
+        <h2>Search Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>RFID Tag</th>
+                    <th>Location</th>
+                    <th>Original Quantity</th>
+                    <th>Current Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for medicine in medicines %}
+                    <tr>
+                        <td>{{ medicine.name }}</td>
+                        <td>{{ medicine.rfid_tag }}</td>
+                        <td>{{ medicine.location }}</td>
+                        <td>{{ medicine.original_quantity }}</td>
+                        <td>{{ medicine.quantity }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No medicines found.</p>
+    {% endif %}
+</body>
+</html>

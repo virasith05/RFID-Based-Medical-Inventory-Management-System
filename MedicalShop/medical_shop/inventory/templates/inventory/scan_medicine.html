@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Scan Medicine</title>
+</head>
+<body>
+    <h2>Scan Medicine</h2>
+    <div id="medicine-info"></div>
+
+    <script>
+        var socket = new WebSocket('ws://' + window.location.host + '/ws/inventory/');
+
+        socket.onmessage = function(e) {
+            var data = JSON.parse(e.data);
+            var status = data.status;
+
+            if (status === 'success') {
+                document.getElementById('medicine-info').innerHTML = 
+                    'Medicine: ' + data.medicine_name + '<br>New Quantity: ' + data.new_quantity;
+            } else if (status === 'error') {
+                document.getElementById('medicine-info').innerHTML = data.message;
+            }
+        };
+
+        socket.onclose = function(e) {
+            console.error('WebSocket closed unexpectedly');
+        };
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                var rfidTag = prompt("Enter RFID Tag:");
+                socket.send(JSON.stringify({'rfid_tag': rfidTag}));
+            }
+        });
+    </script>
+</body>
+</html>
