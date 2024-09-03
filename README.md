@@ -1,10 +1,10 @@
 # RFID-Based-Medical-Inventory-Management-System
 
-**Overview**
+***Overview***
 
 The RFID-Based Medical Inventory Management System is a Django-based web application designed to improve inventory management in a medical shop. By integrating RFID technology with a web interface, this system automates the tracking of medicine stock levels, ensuring efficient operations and preventing stockouts.
 
-**Features**
+***Features***
 
 1)RFID Tagging for Inventory Management: Each medicine is tagged with an RFID tag upon arrival. The RFID tag number, medicine name, location (rack number), original quantity, and current quantity are recorded in a database through a web interface.
 
@@ -18,7 +18,7 @@ The RFID-Based Medical Inventory Management System is a Django-based web applica
 
 6)User-Friendly Interface: Displays all medicines in a table format, showing both original and current quantities. This ensures easy navigation and management for the shop staff.
 
-**Technical Stack**
+***Technical Stack***
 
 Backend: Django (Python)
 
@@ -28,7 +28,7 @@ Hardware: Arduino Uno R3, RC522 RF IC Card Sensor Module
 
 Database: SQLite (default for Django)
 
-**How It Works**
+***How It Works***
 
 Setup: New medicines are tagged with RFID tags, and their details are manually entered into the system using the web application.
 
@@ -36,7 +36,7 @@ Billing: At the billing counter, medicines are scanned using the RFID reader. Th
 
 Real-Time Monitoring: The web application provides real-time inventory levels and sends alerts when stock is low, ensuring no medicine runs out unexpectedly.
 
-**Benefits**
+***Benefits***
 
 Efficiency: Automates the process of inventory tracking and reduces manual errors.
 
